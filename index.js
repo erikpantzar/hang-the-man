@@ -238,7 +238,52 @@ const init = () => {
 init();
 
 document.addEventListener("click", (event) => {
-  if (event.target === document.querySelector(".js-restart")) {
+  if (event.target.classList.value.indexOf("js-restart") > -1) {
     initalState();
   }
+});
+
+const externalWordForm = document.querySelector(".external-word-form");
+externalWordForm.addEventListener("submit", (event) => {
+  event.preventDefault(true);
+  console.log();
+
+  const theWord = event.target[0].value;
+  const location = window.location.href;
+  console.log({ encoded: btoa(theWord), location });
+
+  const share = document.querySelector(".js-share-url-container");
+  share.innerHTML =
+    "" +
+    window.location.origin +
+    window.location.pathname +
+    "?w=" +
+    btoa(theWord);
+
+  document.querySelector(".js-reveal-share").classList.add("is-visible");
+});
+
+window.addEventListener("load", function (event) {
+  console.log("just loaded site");
+
+  if (!this.window.location.search) {
+    console.log("NO SEARCH");
+    return false;
+  } else {
+    console.log("continue");
+  }
+
+  const value = window.location.search.substring(
+    window.location.search.indexOf("?w=") + 3,
+    window.location.search.length
+  );
+
+  this.window.history.pushState(null, null, window.location.pathname);
+
+  document.dispatchEvent(
+    new CustomEvent(events.NEW_WORD, {
+      bubbles: true,
+      detail: { word: atob(value).toUpperCase() },
+    })
+  );
 });

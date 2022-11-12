@@ -1,10 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap');
 
+
+:root {
+    --base-background: #fff;
+    --base-color: #444;
+    --button-background: rgba(0,0,0,0.3);
+    --base-opaque-background: rgba(255, 255, 255, 0.4);
+    --base-code-background:  rgba(255, 255, 255, 0.4);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --base-background: #000;
+        --base-color: #fee;
+        --button-background: rgba(255,255,255,0.3);
+        --base-opaque-background: rgba(0, 0, 0, 0.4);
+        --base-code-background:  rgba(255, 255, 255, 0.4);
+    }
+}
+
+
 html, body {
     margin: 0;
     padding: 0;
 
     font-family: 'Merriweather', serif;
+
+    background: var(--base-background);
+    color: var(--base-color);
 }
 
 body {
@@ -41,6 +64,14 @@ label {
 
 }
 
+#stage2 {
+    justify-content: flex-end;
+}
+
+.guess-form {
+    margin-bottom: 20%;
+}
+
 form,
 .word-form,
 .guess-form {
@@ -60,6 +91,9 @@ input {
     padding: 6px;
     text-align: center;
     font-size: 18px;
+
+    background: var(--base-background);
+    color: var(--base-color);
 }
 
 .entry-input-container input {
@@ -72,8 +106,9 @@ input {
 }
 
 .button {
-    background: rgba(0, 0, 0, 0.1);
+    background: var(--button-background);
     border:1px solid rgba(0,0,0, 0.6);
+    color: var(--base-color);
     box-shadow: none;
     font-size: 16px;
     padding: 8px 14px;
@@ -102,7 +137,7 @@ input {
 }
 
 .target-letter {
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid var(--base-color);
     width: 24px;
     padding: 5px;
     margin: 0 8px;
@@ -133,6 +168,7 @@ input {
 }
 
 .game-start.game-going #stage1,
+.game-going #stage3,
 .game-going #stage1 {
     display: none;
 }
@@ -144,21 +180,27 @@ input {
 .end-message { 
     display: none; 
     position: fixed;
-    top: 50%;
-    transform: scale(1.4) translateY(-50%);
-    background: rgba(255, 255, 255, 0.4);
+    top: 0;
+    bottom: 50%;
+    background: var(--base-opaque-background);
+
+    justify-content: center;
+    align-items: center;
+
+    flex-direction: row;
 }
 
 .game-over.lost .end-message.lost {
-    display: block;
+    display: flex;
 }
 
 .game-over.won .end-message.won {
-    display: block;
+    display: flex;
 }
 
 .hangman svg {
     animation: sway 3s ease-in-out alternate infinite;
+    stroke: var(--base-color);
 }
 
 
@@ -299,3 +341,19 @@ input {
 .eleven.hangman .eleven {
     display: block;
 } 
+
+
+.share {
+    display: none;
+    margin: 15px 0 24px;
+}
+.share code {
+    background: var(--base-code-background);
+    padding: 12px;
+    display: block;
+    margin: 0 0 24px;
+}
+
+.share.is-visible {
+    display: block;
+}
