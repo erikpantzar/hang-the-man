@@ -1,0 +1,282 @@
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap');
+
+html, body {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Merriweather', serif;
+}
+
+body {
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y proximity;
+    
+}
+
+
+label {
+    cursor: pointer;
+    display: block;
+    margin: 0 0 15px;
+}
+
+.stage {
+   height: 100vh;
+   
+   scroll-snap-align: center;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form,
+.word-form,
+.guess-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.entry-input-container {
+    margin: 12px 0;
+}
+
+input {
+    line-height: 24px;
+    height: 24px;
+    padding: 6px;
+    text-align: center;
+    font-size: 18px;
+}
+
+.input-letter {
+    max-width: 120px;
+    display: block;
+    margin: 0 0 15px;
+}
+
+.button {
+    background: rgba(0, 0, 0, 0.1);
+    border:1px solid rgba(0,0,0, 0.6);
+    box-shadow: none;
+    font-size: 16px;
+    padding: 8px 14px;
+    min-height: 40px;
+    line-height: 24px;
+}
+
+.button-restart {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.target-letters {
+    display: flex;
+    flex-direction: row;
+    margin: 15px 0 25px;
+}
+
+.target-letter {
+    border-bottom: 2px solid black;
+    width: 24px;
+    padding: 5px;
+    margin: 0 8px;
+    font-size: 2.4rem;
+}
+
+
+.guessed-letters {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    color: maroon;
+}
+
+.guessed-letters li {
+    margin: 0 8px;
+}
+
+
+.game-start #stage2 {
+    display: none;
+}
+
+.game-start.game-going #stage2 {
+    display: flex;
+}
+
+.game-start.game-going #stage1,
+.game-going #stage1 {
+    display: none;
+}
+
+.game-over .guess-form {
+    display: none;
+}
+
+.end-message { 
+    display: none; 
+    position: fixed;
+    top: 50%;
+    transform: scale(2) translateY(-50%);
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.game-over.lost .end-message.lost {
+    display: block;
+}
+
+.game-over.won .end-message.won {
+    display: block;
+}
+
+.hangman svg {
+    animation: sway 3s ease-in-out alternate infinite;
+}
+
+
+@keyframes sway {
+    from {
+        transform: rotate(-2deg);
+    }
+     
+    to {
+        transform: rotate(2deg);
+    }
+}
+
+
+.hangman .one,
+.hangman .two,
+.hangman .three,
+.hangman .four,
+.hangman .five,
+.hangman .six,
+.hangman .seven,
+.hangman .eight,
+.hangman .nine,
+.hangman .ten,
+.hangman .eleven {
+    display: none;
+
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    pointer-events: none;
+    animation: paintitin 2s 150ms linear forwards ;
+}
+
+
+@keyframes paintitin {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+.one.hangman .one {
+    display: block;
+}
+
+.two.hangman .one,
+.two.hangman .two {
+    display: block;
+}
+
+.three.hangman .one,
+.three.hangman .two,
+.three.hangman .three {
+    display: block;
+}
+
+.four.hangman .one,
+.four.hangman .two,
+.four.hangman .three,
+.four.hangman .four {
+    display: block;
+} 
+
+.five.hangman .one,
+.five.hangman .two,
+.five.hangman .three,
+.five.hangman .four, 
+.five.hangman .five {
+    display: block;
+} 
+
+.six.hangman .one,
+.six.hangman .two,
+.six.hangman .three,
+.six.hangman .four,
+.six.hangman .five, 
+.six.hangman .six {
+    display: block;
+} 
+
+.seven.hangman .one,
+.seven.hangman .two,
+.seven.hangman .three
+.seven.hangman .four, 
+.seven.hangman .five, 
+.seven.hangman .six, 
+.seven.hangman .seven {
+    display: block;
+}  
+
+
+.eight.hangman .one,
+.eight.hangman .two,
+.eight.hangman .three,
+.eight.hangman .four, 
+.eight.hangman .five, 
+.eight.hangman .six, 
+.eight.hangman .seven, 
+.eight.hangman .eight {
+    display: block;
+} 
+
+.nine.hangman .one,
+.nine.hangman .two,
+.nine.hangman .three,
+.nine.hangman .four,
+.nine.hangman .five, 
+.nine.hangman .six, 
+.nine.hangman .seven, 
+.nine.hangman .eight, 
+.nine.hangman .nine {
+    display: block;
+} 
+
+.ten.hangman .one,
+.ten.hangman .two,
+.ten.hangman .three,
+.ten.hangman .four, 
+.ten.hangman .five, 
+.ten.hangman .six, 
+.ten.hangman .seven, 
+.ten.hangman .eight, 
+.ten.hangman .nine, 
+.ten.hangman .ten {
+    display: block;
+} 
+
+.eleven.hangman .one,
+.eleven.hangman .two,
+.eleven.hangman .three
+.eleven.hangman .four 
+.eleven.hangman .five 
+.eleven.hangman .six 
+.eleven.hangman .seven 
+.eleven.hangman .eight 
+.eleven.hangman .nine 
+.eleven.hangman .ten 
+.eleven.hangman .eleven {
+    display: block;
+} 
