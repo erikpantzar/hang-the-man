@@ -16,6 +16,10 @@ body {
     
 }
 
+.flex-inline {
+    display: flex;
+    align-items: stretch;
+}
 
 label {
     cursor: pointer;
@@ -25,7 +29,7 @@ label {
 
 .stage {
    height: 100vh;
-   max-width: 90%;
+   max-width: 96%;
    margin: auto;
    
    scroll-snap-align: center;
@@ -58,9 +62,13 @@ input {
     font-size: 18px;
 }
 
+.entry-input-container input {
+    max-width: 80%;
+}
+
 .input-letter {
     max-width: 120px;
-    margin: 0 0 15px;
+    margin: 0;
 }
 
 .button {
@@ -73,10 +81,18 @@ input {
     line-height: 24px;
 }
 
+.button:focus,
+.button:active {
+    opacity: .8;
+    transition: opacity 300ms ease-out;
+}
+
 .button-restart {
     position: fixed;
     top: 10px;
     left: 10px;
+
+    z-index: 20;
 }
 
 .target-letters {

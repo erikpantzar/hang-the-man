@@ -81,14 +81,14 @@
 
         <form class="guess-form" autocomplete="off">
             <label for="guessinput">Guess the word!</label>
-            <div>
-            <input type="text" required maxlength="1" class="input-letter" pattern="[A-Öa-ö]{1}" placeholder="letter" id="guessinput" />
-            <button class="button" type="submit">Guess!</button>
-        </div>
+            <div class="flex-inline">
+                <input type="text" required maxlength="1" class="input-letter" pattern="[A-Öa-ö]{1}" placeholder="letter" id="guessinput" />
+                <button class="button" type="submit">Guess!</button>
+            </div>
         </form>
 
         <div class="hangman-controls">
-            <button class="button button-restart" type="button" class="js-restart">Restart game</button>
+            <button class="button button-restart js-restart" type="button" class="js-restart">New game</button>
         </div>
     </section>
     
