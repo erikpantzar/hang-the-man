@@ -166,10 +166,7 @@ window.addEventListener(events.RESET, () => {
 
 function initalState() {
   // game-start game-going game-over lost
-  document.body.classList.remove("game-over");
-  document.body.classList.remove("game-lost");
-  document.body.classList.remove("game-going");
-  document.body.classList.remove("lost");
+  document.body.classList = "";
   document.body.classList.add("game-start");
 
   document.querySelector(".guessed-letters").innerHTML = null;
