@@ -11,6 +11,8 @@ body {
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: y proximity;
+
+    text-align: center;
     
 }
 
@@ -23,6 +25,8 @@ label {
 
 .stage {
    height: 100vh;
+   max-width: 90%;
+   margin: auto;
    
    scroll-snap-align: center;
 
