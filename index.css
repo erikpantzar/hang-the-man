@@ -60,7 +60,6 @@ input {
 
 .input-letter {
     max-width: 120px;
-    display: block;
     margin: 0 0 15px;
 }
 
@@ -130,7 +129,7 @@ input {
     display: none; 
     position: fixed;
     top: 50%;
-    transform: scale(2) translateY(-50%);
+    transform: scale(1.4) translateY(-50%);
     background: rgba(255, 255, 255, 0.4);
 }
 
