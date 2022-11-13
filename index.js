@@ -270,17 +270,30 @@ window.addEventListener("load", function (event) {
     console.log("continue");
   }
 
-  const value = window.location.search.substring(
-    window.location.search.indexOf("?w=") + 3,
-    window.location.search.length
-  );
+  // queried game !!
+  if (window.location.search.indexOf("?w=") > -1) {
+    const value = window.location.search.substring(
+      window.location.search.indexOf("?w=") + 3,
+      window.location.search.length
+    );
 
-  this.window.history.pushState(null, null, window.location.pathname);
+    this.window.history.pushState(null, null, window.location.pathname);
 
-  document.dispatchEvent(
-    new CustomEvent(events.NEW_WORD, {
-      bubbles: true,
-      detail: { word: atob(value).toUpperCase() },
-    })
-  );
+    document.dispatchEvent(
+      new CustomEvent(events.NEW_WORD, {
+        bubbles: true,
+        detail: { word: atob(value).toUpperCase() },
+      })
+    );
+  }
+
+  // another game !
+  const search = window.location.search;
+  if ((search.indexOf("?d=") > -1) & (search.length > 3)) {
+    console.log("we got a game on our hands!!");
+
+    const data = search.substring(search.indexOf("?d=") + 3, search.length);
+
+    console.log(decode(data));
+  }
 });
